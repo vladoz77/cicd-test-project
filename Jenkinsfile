@@ -18,5 +18,17 @@ pipeline{
           git branch: 'main', url: 'https://github.com/vladoz77/cicd-test-project'
         }
     }
+
+    stage("Build Application"){
+      steps{
+        sh "mvn clean install"
+      }
+    }
+
+    stage("Test Application"){
+      steps{
+        sh "mvn test"
+      }
+    }
   }
 }
