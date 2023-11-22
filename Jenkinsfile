@@ -33,7 +33,6 @@ pipeline{
 
     stage("sonarqube analyses"){
       steps{
-        def scannerHome = tool 'sonar-scanner'; 
         withSonarQubeEnv(credentialsId: 'sonarqube-token', installationName: 'sonarqube-server'){
           sh "mvn sonar:sonar"
         }
