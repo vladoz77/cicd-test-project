@@ -5,7 +5,7 @@ pipeline{
   tools{
     jdk "Java17"
     maven "Maven3"
-    docker "docker-agent"
+    
   }
   environment{
     APP_NAME = "cicd-test-project"
