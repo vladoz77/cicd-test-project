@@ -1,6 +1,7 @@
 pipeline{
   agent{
     label "slave-node"
+    dockerfile true
   }
   tools{
     jdk "Java17"
