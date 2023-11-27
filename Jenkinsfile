@@ -6,6 +6,14 @@ pipeline{
     jdk "Java17"
     maven "Maven3"
   }
+  enviroment{
+    APP_NAME="cicd-test-project"
+    RELEASE="1.0.0"
+    DOCKER_USER="vladoz77"
+    DOCKER_PASS="dockerhub"
+    IMAGE_NAME="$(DOCKER_USER) + "/" + $(APP_NAME)"
+    IMAGE_TAG="$(RELEASE)-${BUILD_NUMBER}"
+  }
   stages{
     stage("Clean-workspace"){
         steps{
@@ -48,5 +56,21 @@ pipeline{
         }
       }
     }
+    
+    stage("Build and push Docker image"){
+      steps{
+        script{
+          docker.withRegistry('',DOCKER_PASS){
+            docker_image = docker.build "${IMAGE_NAME}"
+          }
+          
+          docker.withRegistry('',DOCKER_PASS){
+            docker_image.push("${IMAGE_TAG}")
+            docker_image.push('latest')
+          }
+        }
+      }
+    }
+
   }
 }
