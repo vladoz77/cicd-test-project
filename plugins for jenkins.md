@@ -1,0 +1,3 @@
+Maven Integration
+Pipeline Maven Integration
+Eclipse Temurin installer
