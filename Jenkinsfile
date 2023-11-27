@@ -6,7 +6,7 @@ pipeline{
     jdk "Java17"
     maven "Maven3"
   }
-  enviroment{
+  environment{
     APP_NAME = "cicd-test-project"
     RELEASE = "1.0.0"
     DOCKER_USER = "vladoz77"
