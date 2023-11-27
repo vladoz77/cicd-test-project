@@ -1,6 +1,6 @@
 pipeline{
   agent{
-    label "slave-node"
+    label "master"
   }
   tools{
     jdk "Java17"
