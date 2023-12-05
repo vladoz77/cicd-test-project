@@ -17,6 +17,7 @@ spec:
       containers:
       - image: vladoz77/cicd-test-project:latest
         name: cicd-test-project
+        
         resources:
           requests:
             memory: 100Mi
@@ -24,6 +25,20 @@ spec:
           limits:
             memory: 250Mi
             cpu: 100m
+        
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 3
+          timeoutSeconds: 3
         ports:
           - name: app
             containerPort: 8080
