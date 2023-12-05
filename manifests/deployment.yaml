@@ -39,6 +39,8 @@ spec:
         #     port: 8080
         #   initialDelaySeconds: 3
         #   timeoutSeconds: 3
+        imagePullSecrets:
+          - name:  docker-cred
         ports:
           - name: app
             containerPort: 8080
