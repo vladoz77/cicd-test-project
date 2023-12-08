@@ -71,7 +71,7 @@ pipeline{
       }
     }
 
-    stage("Build and push Docker image"){
+    stage("triggering Update manifest Job"){
       steps{
         script{
           echo "triggering Update manifest Job"
