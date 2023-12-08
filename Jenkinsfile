@@ -71,5 +71,9 @@ pipeline{
       }
     }
 
+    stage('Trigger Update Manifest') {
+        echo "triggering Update manifest Job"
+        build job: 'argocd-update-manifest', parameters: [string(name: 'TAG', value: ${IMAGE_TAG})]
+    }
   }
 }
