@@ -71,13 +71,13 @@ pipeline{
       }
     }
 
-    // stage("triggering Update manifest Job"){
-    //   steps{
-    //     script{
-    //       echo "triggering Update manifest Job"
-    //       build job: 'argocd-update-manifest'
-    //     }
-    //   }
-    // }
+    stage("triggering Update manifest Job"){
+      steps{
+        script{
+          echo "triggering Update manifest Job"
+          build job: 'argocd-update-manifest', parameters: [string(name: 'TAG', value: "${IMAGE_TAG}")]
+        }
+      }
+    }
   }
 }
