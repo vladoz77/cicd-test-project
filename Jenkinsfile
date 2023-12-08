@@ -75,7 +75,7 @@ pipeline{
       steps{
         script{
           echo "triggering Update manifest Job"
-          build job: 'argocd-update-manifest', parameters: [string(name: 'TAG', value: env.BUILD_NUMBER)]
+          build job: 'argocd-update-manifest', parameters: [string(name: 'TAG', value: "${IMAGE_TAG}")]
         }
       }
     }
